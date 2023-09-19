@@ -7,17 +7,18 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 export default function SearchItems(props) {
   const [mydata,setMydata] = useState()
   const [icon,setIcon] = useState(false)
+  const backendURL = process.env.BACKENDURL
   const [searchData,setSearchData] = useState()
   const [searchNote,setSearchNote] = useState([])
   const _user = window.location.href
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
-  fetch("http://localhost:3000/users").then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(props.name+"data"===ee._id){setSearchData(ee);setSearchNote(ee.notification);ee.notification.map((e)=>{if(e.user_id===user_id){setIcon(true)}})};if(user_id+"data"===ee._id){setMydata(ee);ee.chats.map((e)=>{if(e.user_ID===props.name){setIcon(true)}})}})))
+  fetch(`${backendURL}/users`).then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(props.name+"data"===ee._id){setSearchData(ee);setSearchNote(ee.notification);ee.notification.map((e)=>{if(e.user_id===user_id){setIcon(true)}})};if(user_id+"data"===ee._id){setMydata(ee);ee.chats.map((e)=>{if(e.user_ID===props.name){setIcon(true)}})}})))
 
   const request =()=>{
     const newSearchNote = searchNote
     newSearchNote.push({user_id:user_id,dp:mydata.dp,notification:"requested"})
     setSearchNote(newSearchNote)
-    fetch("http://localhost:3000/update-user",{
+    fetch(`${backendURL}/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{'Content-Type': 'application/json'},
