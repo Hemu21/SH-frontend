@@ -13,6 +13,7 @@ export default function Chat() {
   const [uchat,setUChat] = useState([])
   const [face,setFace] = useState(1)
   const [dum,setDum] = useState()
+  const backendURL = process.env.BACKENDURL
   const _url = window.location.href;
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))
@@ -42,7 +43,7 @@ export default function Chat() {
   const id = _url.slice(_url.lastIndexOf("/")+1)
   useEffect(()=>{
 
-    fetch("http://localhost:3000/update-user",{
+    fetch(`${backendURL}/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{
@@ -53,7 +54,7 @@ export default function Chat() {
     
   },[])
   if(me){
-    fetch("http://localhost:3000/update-users",{
+    fetch(`${backendURL}/update-users`,{
         method:"PUT",
         mode:"cors",
         headers:{
@@ -64,7 +65,7 @@ export default function Chat() {
   }
   window.addEventListener("beforeunload",(ev)=>{
     ev.preventDefault();
-    fetch("http://localhost:3000/update-user",{
+    fetch(`${backendURL}/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{
@@ -86,13 +87,13 @@ export default function Chat() {
       const recive = {chats:revdata}
       mydata.map((ele)=>console.info(ele))
       revdata.map((ee)=>console.info(ee))
-      fetch("http://localhost:3000/update-user",{
+      fetch(`${backendURL}/update-user`,{
         method:"PUT",
         mode:"cors",
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({id:user_id+"data",data:sent})
       }).then((e)=>{
-        fetch("http://localhost:3000/update-user",{
+        fetch(`${backendURL}/update-user`,{
           method:"PUT",
           mode:"cors",
           headers:{'Content-Type': 'application/json'},
@@ -110,13 +111,13 @@ export default function Chat() {
     const recive = {chats:revdata}
     mydata.map((ele)=>console.info(ele))
     revdata.map((ee)=>console.info(ee))
-    fetch("http://localhost:3000/update-user",{
+    fetch(`${backendURL}/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({id:user_id+"data",data:sent})
     }).then((e)=>{
-    fetch("http://localhost:3000/update-user",{
+    fetch(`${backendURL}/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{'Content-Type': 'application/json'},
@@ -126,7 +127,7 @@ export default function Chat() {
     }
   }
   
-    fetch("http://localhost:3000/users").then((res)=>res.json().then((ele)=>ele.map((e,i)=>{
+    fetch(`${backendURL}/users`).then((res)=>res.json().then((ele)=>ele.map((e,i)=>{
       if(e._id===user_id+"data"){
         setMydata(e.chats)
         setIndex(i)
