@@ -14,6 +14,7 @@ export default function NotificationItems(props) {
   const [reqChat,setReqChat] = useState([])
   const [resChat,setResChat] = useState([])
   const [enter,setEnter] = useState(false)
+  const backendURL = process.env.BACKENDURL
   const [resName,setResName] = useState()
   const _user = window.location.href
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
@@ -28,7 +29,7 @@ useEffect(()=>{
   if(note==="requested"){
     setNoteValue(true)
   }
-  fetch("http://localhost:3000/users").then((res)=>res.json().then((ee)=>ee.map((ele)=>{if(ele._id===user_id+"data"){setRes(ele);setResChat(ele.chats)}})))
+  fetch(`${backendURL}/users`).then((res)=>res.json().then((ee)=>ee.map((ele)=>{if(ele._id===user_id+"data"){setRes(ele);setResChat(ele.chats)}})))
   },[])
   const accept = (id,spec)=>{
     
@@ -42,7 +43,7 @@ useEffect(()=>{
       newResChat.push({user_ID: props.name,dp: props.dp,status: "offline",chat:[]})
       setResChat(newResChat)
     
-      fetch("http://localhost:3000/update-user",{
+      fetch(`${backendURL}/update-user`,{
         method:"PUT",
         mode:"cors",
         headers:{'Content-Type': 'application/json'},
