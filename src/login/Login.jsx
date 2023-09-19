@@ -7,9 +7,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
-
+  const backendURL = process.env.BACKENDURL
   const getIds = async (id,password) =>{
-    const sent = await fetch("http://localhost:3000/users")
+    const sent = await fetch(`${backendURL}/users`)
     const data =  await sent.json()
     for (let index = 0; index < data.length; index++) {
       const element = data[index];
