@@ -20,12 +20,12 @@ import { Button, Select, TextField } from '@mui/material';
 export default function ChatFooter(props) {
   const [status,setStatus] = useState()
   const [location,setLocation] = useState("")
-
+  const backendURL = process.env.BACKENDURL
   const _url = window.location.href;
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))
   const id = _url.slice(_url.lastIndexOf("/")+1)
-    fetch("http://localhost:3000/users").then((res)=>res.json().then((ee)=>ee.map((ele)=>{
+    fetch(`${backendURL}/users`).then((res)=>res.json().then((ee)=>ee.map((ele)=>{
     if(ele._id===id+"data"){
       setStatus(ele.status)
       setLocation(ele.location)
@@ -68,10 +68,6 @@ export default function ChatFooter(props) {
     console.info(blob)
     
     props.change({from:{sentaudio:formData,time:new Date().toLocaleTimeString(),visited: visit },to:{reciveaudio:formData,time:new Date().toLocaleTimeString()}})
-    const url = URL.createObjectURL(blob);
-    const audio = document.getElementById("chatbodySendAudio");
-    audio.className = "chataudio"
-    audio.src = url;
     handleClose()});
     }
   };
