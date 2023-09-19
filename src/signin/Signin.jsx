@@ -9,10 +9,10 @@ import { Button, TextField } from '@mui/material';
 function Signin(){
   const [message, setMessage] = useState('');
   const [genotp,setGenotp] = useState("");
-
+  const backendURL = process.env.BACKENDURL
   let signv = "OTP"
   const getId = async (ele) =>{
-    const sent = await fetch("http://localhost:3000/sign",{
+    const sent = await fetch(`${backendURL}/sign`,{
       method:"POST",
       mode:"cors",
       headers:{
@@ -20,7 +20,7 @@ function Signin(){
       },
       body: JSON.stringify(ele)
   })
-  const send = await fetch("http://localhost:3000/add-user-data",{
+  const send = await fetch(`${backendURL}/add-user-data`,{
       method:"POST",
       mode:"cors",
       headers:{
@@ -37,7 +37,7 @@ function Signin(){
   }
 
   const getIds = async (id) =>{
-    const sent = await fetch("http://localhost:3000/users")
+    const sent = await fetch(`${backendURL}/users`)
     const data =  await sent.json()
     for (let index = 0; index < data.length; index++) {
       const element = data[index];
@@ -52,7 +52,7 @@ function Signin(){
   const handleSendOTP = async (number) => {
     try {
       // Make an API request to send OTP
-      const response = await fetch('http://localhost:3000/api/send-otp', {
+      const response = await fetch(`${backendURL}/api/send-otp`, {
         method: "POST",
         mode:"cors",
         headers: { 'Content-Type': 'application/json' },
