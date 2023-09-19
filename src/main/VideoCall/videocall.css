@@ -1,0 +1,17 @@
+.videocallOpt{
+    width: 98%;
+    height: 98%;
+    margin: auto;
+    position: relative;
+    border: 1px black solid;
+}
+.videocallBottom{
+    width: 80%;
+    height: 40px;
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    bottom: 0px;
+    margin:auto;
+    margin-left: 10%;
+}

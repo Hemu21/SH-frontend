@@ -1,0 +1,39 @@
+.chatfooterMain{
+    height: 78px;
+    border: 1px black solid;
+    background: rgb(24, 109, 246);
+    display: flex;
+    justify-content: space-between;
+    
+}
+.chatfooterText{
+    color: white;
+    width: calc(100vw - 185px);
+    margin-top: 13px;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 30px;
+    font-size: 20px;
+    border: none;
+}
+.emoji{
+    border: 1px black solid;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    margin: auto;
+    margin-right: 3px;
+}
+.attach{
+    border: none;
+    width: 35px;
+    height: 35px;
+
+}
+
+.RecordMenu{
+    height: 120px;
+    width: 290px;
+    align-items: center;
+    margin: auto;
+}

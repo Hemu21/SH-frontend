@@ -1,0 +1,25 @@
+.chat-recive-field{
+    border: 1px black solid;
+    display: block;
+    height: auto;
+    max-width: 60vw;
+    margin-right: 38vw;
+    background-color: rgb(5, 62, 62);
+    color: white;
+    border-radius: 5px;
+    overflow-wrap: break-word;
+    position: sticky;
+    float: left;
+    font-size: 20px;
+    padding-left: 35px;
+    padding-right: 10px;
+}
+
+.recive-time{
+    position: absolute;
+    margin: 0;
+    float: right;
+    margin-right: 5px;
+    font-size: 10px;
+    bottom: 5px;
+}

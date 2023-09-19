@@ -1,0 +1,23 @@
+.profileImg{
+    margin-left: 40px;
+    margin-top: 80px;
+}
+.arrangeP{
+    display: flex;
+    margin-bottom: 15px;
+}
+.arrangePN{
+    display: none;
+    margin-bottom: 15px;
+}
+.LabelP{
+    margin:5px;
+    font-size: 28px;
+}
+
+.profileMain{
+width: 250px;
+margin: auto;
+border-radius: 5px;
+padding-top: 30px;
+}

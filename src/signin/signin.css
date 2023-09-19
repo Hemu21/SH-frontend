@@ -1,0 +1,64 @@
+.signin{
+    width: 110px;
+    margin: auto;
+}
+.signinForm{
+    width: 290px;
+    margin: auto;
+    border-radius: 5px;
+    padding-top: 30px;
+}
+
+.s-arrange{
+    display: flex;
+    margin-bottom: 15px;
+}
+.s-arrangeoi{
+    display: none;
+    margin-bottom: 15px;
+}
+.s-Label{
+    margin:5px;
+    margin-left: 25px;
+    font-size: 28px;
+}
+.s-Labelo{
+    margin:5px;
+    margin-left: 37px;
+    font-size: 25px;
+}
+.s-Label1{
+    margin:5px;
+    margin-top: 15px;
+    margin-left: 25px;
+    font-size: 16px;
+}
+.s-Labelu{
+    margin:5px;
+    margin-top: 9px;
+    margin-left: 25px;
+    font-size: 23px;
+}
+.s-Labelm{
+    margin:5px;
+    margin-top: 9px;
+    margin-left: 10px;
+    font-size: 17px;
+}
+.s-Label2{
+    margin:5px;
+    margin-top: 15px;
+    font-size: 11px;
+}
+.s-arrange1{
+    width:90px;
+    margin: auto;
+    display: flex;
+    margin-bottom: 15px;
+}
+.s-arrange3{
+    width:190px;
+    margin: auto;
+    display: flex;
+    margin-bottom: 15px;
+}

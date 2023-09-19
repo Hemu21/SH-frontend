@@ -1,0 +1,10 @@
+.chatboxheaderMain{
+    width: 100%;
+
+    position: absolute;
+}
+.chatboxheaderBody{
+    height: calc(100% - 120px);
+    overflow: hidden;
+    border: 1px black solid;
+}

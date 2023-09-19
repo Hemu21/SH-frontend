@@ -1,0 +1,37 @@
+.login{
+    width: 90px;
+    margin: auto;
+}
+.loginForm{
+    width: 250px;
+    margin: auto;
+    border-radius: 5px;
+    padding-top: 30px;
+}
+
+.arrange{
+    display: flex;
+    margin-bottom: 15px;
+}
+.Label{
+    margin:5px;
+    font-size: 23px;
+}
+
+.Label1{
+    margin:5px;
+    margin-top: 15px;
+    font-size: 16px;
+}
+.arrange1{
+    width:90px;
+    margin: auto;
+    display: flex;
+    margin-bottom: 15px;
+}
+.arrange3{
+    width:180px;
+    margin: auto;
+    display: flex;
+    margin-bottom: 15px;
+}

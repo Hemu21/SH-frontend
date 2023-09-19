@@ -1,0 +1,10 @@
+.callOpt{
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: 1px black solid;
+}
+.callBottom{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}

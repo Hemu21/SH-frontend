@@ -1,0 +1,14 @@
+.videoMainUser{
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+}
+.videoMainUsers{
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+}

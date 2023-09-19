@@ -1,0 +1,23 @@
+.arrangeA{
+    display: flex;
+    margin-bottom: 15px;
+}
+.arrangeAN{
+    display: none;
+    margin-bottom: 15px;
+}
+.arrangeAP{
+    display: block;
+    margin-bottom: 15px;
+}
+.LabelA{
+    margin:5px;
+    font-size: 28px;
+}
+
+.myaccountMain{
+width: 250px;
+margin: auto;
+border-radius: 5px;
+padding-top: 30px;
+}

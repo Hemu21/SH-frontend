@@ -1,0 +1,23 @@
+.headerMain{
+    width:100%;
+    height: 50px;
+    display: flex;
+    border-radius: 5px;
+    background: rgb(24, 109, 246);
+    justify-content: space-between;
+    position: absolute;
+    margin-top: 1px;
+    margin-bottom: 60px;
+    top: 0px;
+}
+.headerTitle{
+    width:90%;
+    height: 50px;
+    display: flex;
+    border-radius: 5px;
+    background: rgb(24, 109, 246);
+}
+.icon{
+    margin: auto;
+    margin-right: 10px;
+}
