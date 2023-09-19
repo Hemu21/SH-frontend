@@ -6,15 +6,16 @@ export default function Notifications() {
   const _user = window.location.href
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
   const [note,setNote] = useState([])
+  const backendURL = process.env.BACKENDURL
 
 useEffect(()=>{  
-  fetch("http://localhost:3000/users").then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(user_id+"data"===ee._id){setNote(ee.notification)}})))
+  fetch(`${backendURL}/users`).then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(user_id+"data"===ee._id){setNote(ee.notification)}})))
   },[])
   const change = (index)=>{
     const newNote = note
     newNote.splice(index,1)
     setNote(newNote)
-    fetch("http://localhost:3000/update-user",{
+    fetch(`${backendURL}/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{'Content-Type': 'application/json'},
