@@ -9,7 +9,7 @@ import { Button, TextField } from '@mui/material';
 function Signin(){
   const [message, setMessage] = useState('');
   const [genotp,setGenotp] = useState("");
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL = process.env.BACKENDURL //|| "https://sh-backend-61my.onrender.com"
   let signv = "OTP"
   const getId = async (ele) =>{
     const sent = await fetch(`${backendURL}/api/v1/sign`,{
@@ -39,6 +39,7 @@ function Signin(){
   const getIds = async (id) =>{
     const sent = await fetch(`${backendURL}/api/v1/users`)
     const data =  await sent.json()
+    console.info(data)
     for (let index = 0; index < data.length; index++) {
       const element = data[index];
       if(element._id===id){
@@ -58,7 +59,7 @@ function Signin(){
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mobileNumber:number })
       });
-
+      
       if (response.ok) {
         setMessage('OTP sent successfully.');
         toast.success(message,{theme:"colored"})
@@ -66,6 +67,7 @@ function Signin(){
         setGenotp(res.otp)
       } else {
         const data = await response.json();
+        console.info(data)
         setMessage(data.error || 'Failed to send OTP.');
         toast.error(message,{theme:"colored"})
       }
@@ -107,7 +109,7 @@ function Signin(){
             toast.error("Invalid OTP",{theme:"colored"})
           }
       }else{
-        handleSendOTP(phno).then(()=>{
+        handleSendOTP(phno).then((e)=>{
           toast.success("otp sent succussfully",{theme:"colored"})
           document.getElementById("otp").className = "s-arrange"
           document.getElementById("signbtn").innerText = "Sign in"
