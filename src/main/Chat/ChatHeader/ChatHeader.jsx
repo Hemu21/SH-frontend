@@ -17,6 +17,7 @@ export default function ChatHeader(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [head,setHead] = useState({})
+  const backendURL = process.env.BACKENDURL
   const _url = window.location.href
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))
@@ -27,7 +28,7 @@ export default function ChatHeader(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-    fetch("http://localhost:3000/users").then((res)=>res.json().then((ele)=>ele.map((e)=>{
+    fetch(`${backendURL}/users`).then((res)=>res.json().then((ele)=>ele.map((e)=>{
       if(e._id===id+"data"){
         setHead(e);
       }
