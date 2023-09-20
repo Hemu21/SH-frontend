@@ -29,6 +29,8 @@ const ContextProvider = ({ children }) => {
         setStream(currentStream);
 
         myVideo.current.srcObject = currentStream;
+        console.info("myyyy")
+        console.info(currentStream)
       });
 
     ;}
@@ -52,7 +54,8 @@ const ContextProvider = ({ children }) => {
     });
     console.info("streaming. connnnn")
     peer.on('stream', (currentStream) => {
-      console.info("streaming..........")
+      console.info("ursss")
+      console.info(currentStream)
       userVideo.current.srcObject = currentStream;
     });
 
