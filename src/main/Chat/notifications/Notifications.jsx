@@ -6,16 +6,16 @@ export default function Notifications() {
   const _user = window.location.href
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
   const [note,setNote] = useState([])
-  const backendURL = process.env.BACKENDURL
+  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
 
 useEffect(()=>{  
-  fetch(`${backendURL}/users`).then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(user_id+"data"===ee._id){setNote(ee.notification)}})))
+  fetch(`${backendURL}/api/v1/users`).then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(user_id+"data"===ee._id){setNote(ee.notification)}})))
   },[])
   const change = (index)=>{
     const newNote = note
     newNote.splice(index,1)
     setNote(newNote)
-    fetch(`${backendURL}/update-user`,{
+    fetch(`${backendURL}/api/v1/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{'Content-Type': 'application/json'},
