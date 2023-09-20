@@ -29,6 +29,9 @@ const ContextProvider = ({ children }) => {
         setStream(currentStream);
 
         myVideo.current.srcObject = currentStream;
+        myVideo.current.onloadedmetadata = (e) => {
+          myVideo.current.play();
+        };
         console.info("myyyy")
         console.info(currentStream)
       });
@@ -57,6 +60,9 @@ const ContextProvider = ({ children }) => {
       console.info("ursss")
       console.info(currentStream)
       userVideo.current.srcObject = currentStream;
+      userVideo.current.onloadedmetadata = (e) => {
+          userVideo.current.play();
+        };
     });
 
     peer.signal(call.signal);
@@ -74,6 +80,9 @@ const ContextProvider = ({ children }) => {
 
     peer.on('stream', (currentStream) => {
       userVideo.current.srcObject = currentStream;
+      userVideo.current.onloadedmetadata = (e) => {
+          userVideo.current.play();
+        };
     });
 
     socket.on('callAccepted', (signal) => {
