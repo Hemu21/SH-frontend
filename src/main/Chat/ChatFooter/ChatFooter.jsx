@@ -20,12 +20,12 @@ import { Button, Select, TextField } from '@mui/material';
 export default function ChatFooter(props) {
   const [status,setStatus] = useState()
   const [location,setLocation] = useState("")
-  const backendURL = process.env.BACKENDURL
+  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
   const _url = window.location.href;
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))
   const id = _url.slice(_url.lastIndexOf("/")+1)
-    fetch(`${backendURL}/users`).then((res)=>res.json().then((ee)=>ee.map((ele)=>{
+    fetch(`${backendURL}/api/v1/users`).then((res)=>res.json().then((ee)=>ee.map((ele)=>{
     if(ele._id===id+"data"){
       setStatus(ele.status)
       setLocation(ele.location)
@@ -152,7 +152,7 @@ export default function ChatFooter(props) {
         </div>
         <div className='emoji' onClick={()=>fileInput.current.click()}>
             <AttachFileIcon fontSize='large' />
-            <input ref={fileInput} type="file" style={{ display: 'none' }} />
+            <input ref={fileInput} accept="audio/wav" type="file" style={{ display: 'none' }} />
         </div>
         <div className='emoji'  onClick={(e)=>{handleClick(e);setText("")}}>
             <KeyboardVoiceIcon fontSize='large' />
