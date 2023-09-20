@@ -5,11 +5,11 @@ import "./video.css"
 export default function Video() {
   const _url = window.location.href;
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
-  const backendURL = process.env.BACKENDURL
+  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))
     const { answerCall,name, callAccepted, myVideo, userVideo, callEnded, stream, call } = useContext(SocketContext);
     useEffect(()=>{
-      fetch(`${backendURL}/update-user`,{
+      fetch(`${backendURL}/api/v1/update-user`,{
         method:"PUT",
         mode:"cors",
         headers:{
@@ -20,7 +20,7 @@ export default function Video() {
     },[])
     window.addEventListener("beforeunload",(ev)=>{
       ev.preventDefault();
-      fetch(`${backendURL}/update-user`,{
+      fetch(`${backendURL}/api/v1/update-user`,{
         method:"PUT",
         mode:"cors",
         headers:{
