@@ -38,37 +38,10 @@ const ContextProvider = ({ children }) => {
 
     ;}
     socket.on('callUser', ({ from, name: callerName, signal }) => {
-  console.log('Incoming call from:', callerName);
-  console.log('Signal data:', signal);
-
-  // Create a new Peer instance
-  const peer = new Peer({ initiator: false, trickle: false, stream });
-
-  // Set the remote description to the received SDP offer
-  peer.signal(signal);
-
-  // Listen for the 'signal' event to get the local SDP answer
-  peer.on('signal', async (data) => {
-    // Send the SDP answer back to the caller
-    socket.emit('answerCall', { signal: data, to: from });
-
-    // Create an SDP answer
-    const answer = await peer.createAnswer();
-
-    // Set the local description to the SDP answer
-    peer.signal(answer);
-  });
-
-  // Handle the remote stream
-  peer.on('stream', (currentStream) => {
-    console.log('Remote stream received:', currentStream);
-    userVideo.current.srcObject = currentStream;
-    userVideo.current.onloadedmetadata = (e) => {
-      userVideo.current.play();
-    };
-  });
-});
-
+      console.info("call " signal)
+      setCall({ isReceivingCall: true, from, name: callerName, signal });
+    })
+    
 
   }, [enter]);
   useMemo(()=>{
