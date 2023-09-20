@@ -14,7 +14,7 @@ export default function NotificationItems(props) {
   const [reqChat,setReqChat] = useState([])
   const [resChat,setResChat] = useState([])
   const [enter,setEnter] = useState(false)
-  const backendURL = process.env.BACKENDURL
+  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
   const [resName,setResName] = useState()
   const _user = window.location.href
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
@@ -29,7 +29,7 @@ useEffect(()=>{
   if(note==="requested"){
     setNoteValue(true)
   }
-  fetch(`${backendURL}/users`).then((res)=>res.json().then((ee)=>ee.map((ele)=>{if(ele._id===user_id+"data"){setRes(ele);setResChat(ele.chats)}})))
+  fetch(`${backendURL}/api/v1/users`).then((res)=>res.json().then((ee)=>ee.map((ele)=>{if(ele._id===user_id+"data"){setRes(ele);setResChat(ele.chats)}})))
   },[])
   const accept = (id,spec)=>{
     
@@ -43,7 +43,7 @@ useEffect(()=>{
       newResChat.push({user_ID: props.name,dp: props.dp,status: "offline",chat:[]})
       setResChat(newResChat)
     
-      fetch(`${backendURL}/update-user`,{
+      fetch(`${backendURL}/api/v1/update-user`,{
         method:"PUT",
         mode:"cors",
         headers:{'Content-Type': 'application/json'},
