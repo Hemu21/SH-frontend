@@ -57,12 +57,11 @@ const ContextProvider = ({ children }) => {
     });
     console.info("streaming. connnnn")
     peer.on('stream', (currentStream) => {
-      console.info("ursss")
-      console.info(currentStream)
+      console.log('Remote stream received:', currentStream);
       userVideo.current.srcObject = currentStream;
       userVideo.current.onloadedmetadata = (e) => {
-          userVideo.current.play();
-        };
+        userVideo.current.play();
+      };
     });
 
     peer.signal(call.signal);
