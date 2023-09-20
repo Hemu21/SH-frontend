@@ -5,13 +5,13 @@ import "./chatboxbody.css"
 export default function ChatboxBody() {
   const _user = window.location.href
   const [alldata,setAlldata] = useState([])
-  const backendURL = process.env.BACKENDURL
+  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
   const [data,setData] = useState([])
   var status = ""
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
   useEffect(()=>{
 
-    fetch(`${backendURL}/users`).then((res)=>res.json().then((ele)=>{ele.map((ee)=>{if(ee._id===user_id+"data"){setData(ee.chats)}});setAlldata(ele)})).catch((err)=>console.info("Error:-"+err))
+    fetch(`${backendURL}/api/v1/users`).then((res)=>res.json().then((ele)=>{ele.map((ee)=>{if(ee._id===user_id+"data"){setData(ee.chats)}});setAlldata(ele)})).catch((err)=>console.info("Error:-"+err))
     
     
     
