@@ -11,7 +11,7 @@ import VideoCall from './VideoCall/VideoCall'
 export default function Main() {
   const [val,setVal] = useState(1);
   const _user = window.location.href
-  const backendURL = process.env.BACKENDURL
+  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
   const {call, me,callAccepted, answerCall,leaveCall} = useContext(SocketContext)
   const [vid,setVid] = useState(1)
@@ -27,7 +27,7 @@ export default function Main() {
   }
   const changeVid = (e)=>{setVid(e)}
   useEffect(()=>{
-    fetch(`${backendURL}/update-user`,{
+    fetch(`${backendURL}/api/v1/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{
@@ -37,7 +37,7 @@ export default function Main() {
   })
   },[])
   if(me){
-    fetch(`${backendURL}/update-users`,{
+    fetch(`${backendURL}/api/v1/update-users`,{
         method:"PUT",
         mode:"cors",
         headers:{
@@ -48,7 +48,7 @@ export default function Main() {
   }
   window.addEventListener("beforeunload",(ev)=>{
     ev.preventDefault();
-    fetch(`${backendURL}/update-user`,{
+    fetch(`${backendURL}/api/v1/update-user`,{
       method:"PUT",
       mode:"cors",
       headers:{
