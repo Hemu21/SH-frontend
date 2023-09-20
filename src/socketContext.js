@@ -28,7 +28,7 @@ const ContextProvider = ({ children }) => {
       .then((currentStream) => {
         setStream(currentStream);
 
-        myVideo.current.src = window.URL.createObjectURL(currentStream);
+        myVideo.current.srcObject = currentStream;
         myVideo.current.onloadedmetadata = (e) => {
           myVideo.current.play();
         };
@@ -59,7 +59,7 @@ const ContextProvider = ({ children }) => {
     peer.on('stream', (currentStream) => {
       console.info("ursss")
       console.info(currentStream)
-      userVideo.current.src = window.URL.createObjectURL(currentStream);
+      userVideo.current.srcObject = currentStream;
       userVideo.current.onloadedmetadata = (e) => {
           userVideo.current.play();
         };
@@ -79,7 +79,7 @@ const ContextProvider = ({ children }) => {
     });
 
     peer.on('stream', (currentStream) => {
-      userVideo.current.src = window.URL.createObjectURL(currentStream);
+      userVideo.current.srcObject = currentStream;
       userVideo.current.onloadedmetadata = (e) => {
           userVideo.current.play();
         };
