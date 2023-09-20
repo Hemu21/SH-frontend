@@ -2,7 +2,7 @@ import React, { createContext, useState, useRef, useEffect, useMemo } from 'reac
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
-const Server = process.env.SERVER
+const Server = process.env.SERVER || "https://sh-server.onrender.com"
 
 const SocketContext = createContext();
 
