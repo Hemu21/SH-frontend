@@ -38,7 +38,8 @@ const ContextProvider = ({ children }) => {
 
     ;}
     socket.on('callUser', ({ from, name: callerName, signal }) => {
-      console.info("callling.................")
+      console.info('Incoming call from:', callerName);
+      console.info('Signal data:', signal);
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     })
     
@@ -57,7 +58,7 @@ const ContextProvider = ({ children }) => {
     });
     console.info("streaming. connnnn")
     peer.on('stream', (currentStream) => {
-      console.log('Remote stream received:', currentStream);
+      console.info('Remote stream received:', currentStream);
       userVideo.current.srcObject = currentStream;
       userVideo.current.onloadedmetadata = (e) => {
         userVideo.current.play();
