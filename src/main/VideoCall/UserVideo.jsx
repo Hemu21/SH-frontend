@@ -30,6 +30,7 @@ export default function UserVideo() {
 
     return (
     <div>
+      <video playsInline muted ref={myVideo} autoPlay  />
     </div>
   )
 }
