@@ -2,7 +2,7 @@ import React, { createContext, useState, useRef, useEffect, useMemo } from 'reac
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
-const Server = process.env.SERVER || "https://sh-server.onrender.com"
+const Server = "https://sh-server.onrender.com"
 
 const SocketContext = createContext();
 
@@ -18,24 +18,22 @@ const ContextProvider = ({ children }) => {
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
-
+  const just = window.location.href
   useEffect(() => {
-    if(enter){
+    if(just.slice(just.indexOf("/u/")){
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
         setStream(currentStream);
 
         myVideo.current.srcObject = currentStream;
       });
-    }
-  }, [enter]);
-  useEffect(() =>{
+    
     socket.on('me', (id) => setMe(id));
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-  },[]);
+  }
 
   const answerCall = () => {
     setCallAccepted(true);
