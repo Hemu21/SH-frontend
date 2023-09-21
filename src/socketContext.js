@@ -20,7 +20,7 @@ const ContextProvider = ({ children }) => {
   const connectionRef = useRef();
   const just = window.location.href
   useEffect(() => {
-    if(just.slice(just.indexOf("/u/")){
+    if(just.slice(just.indexOf("/u/"))){
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
         setStream(currentStream);
