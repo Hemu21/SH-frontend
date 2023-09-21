@@ -6,9 +6,7 @@ const Server = process.env.SERVER || "https://sh-server.onrender.com"
 
 const SocketContext = createContext();
 
-// const socket = io('http://localhost:5000');
 const socket = io(Server);
-
 const ContextProvider = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
@@ -16,37 +14,25 @@ const ContextProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
-  const [enter,setEnter] = useState(false);
 
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
 
   useEffect(() => {
-    if(enter){
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
         setStream(currentStream);
 
         myVideo.current.srcObject = currentStream;
-        myVideo.current.onloadedmetadata = (e) => {
-          myVideo.current.play();
-        };
-        console.info("myyyy")
-        console.info(currentStream)
       });
 
-    ;}
-    socket.on('callUser', ({ from, name: callerName, signal }) => {
-      console.info("call ",signal)
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
-    })
-    
-
-  }, [enter]);
-  useMemo(()=>{
     socket.on('me', (id) => setMe(id));
-  },[])
+
+    socket.on('callUser', ({ from, name: callerName, signal }) => {
+      setCall({ isReceivingCall: true, from, name: callerName, signal });
+    });
+  }, []);
 
   const answerCall = () => {
     setCallAccepted(true);
@@ -56,13 +42,9 @@ const ContextProvider = ({ children }) => {
     peer.on('signal', (data) => {
       socket.emit('answerCall', { signal: data, to: call.from });
     });
-    console.info("streaming. connnnn")
+
     peer.on('stream', (currentStream) => {
-      console.info('Remote stream received:', currentStream);
       userVideo.current.srcObject = currentStream;
-      userVideo.current.onloadedmetadata = (e) => {
-        userVideo.current.play();
-      };
     });
 
     peer.signal(call.signal);
@@ -71,18 +53,14 @@ const ContextProvider = ({ children }) => {
   };
 
   const callUser = (id) => {
-    setEnter(true)
     const peer = new Peer({ initiator: true, trickle: false, stream });
-    
+
     peer.on('signal', (data) => {
       socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
     });
 
     peer.on('stream', (currentStream) => {
       userVideo.current.srcObject = currentStream;
-      userVideo.current.onloadedmetadata = (e) => {
-          userVideo.current.play();
-        };
     });
 
     socket.on('callAccepted', (signal) => {
@@ -96,7 +74,7 @@ const ContextProvider = ({ children }) => {
 
   const leaveCall = () => {
     setCallEnded(true);
-    setEnter(false)
+
     connectionRef.current.destroy();
 
     window.location.reload();
@@ -113,7 +91,6 @@ const ContextProvider = ({ children }) => {
       setName,
       callEnded,
       me,
-      enter,
       callUser,
       leaveCall,
       answerCall,
