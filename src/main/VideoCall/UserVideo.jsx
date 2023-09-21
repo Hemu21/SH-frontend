@@ -29,8 +29,7 @@ export default function UserVideo() {
       
 
     return (
-    <div style={{border:"1px black solid",width:"28vw",height:"25vh"}}>
-        <video playsInline muted ref={myVideo} autoPlay className='videoMainUsers'  />
+    <div>
     </div>
   )
 }
