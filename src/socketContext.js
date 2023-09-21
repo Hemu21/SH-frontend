@@ -95,12 +95,12 @@ const ContextProvider = ({ children }) => {
       me,
       callUser,
       leaveCall,
-      answerCall,
+      answerCall
     }}
     >
       {children}
     </SocketContext.Provider>
-  );
+  )
 };
 
 export { ContextProvider, SocketContext };
