@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL = "https://sh-backend-61my.onrender.com"
   const getIds = async (id,password) =>{
     const sent = await fetch(`${backendURL}/api/v1/users`)
     const data =  await sent.json()
