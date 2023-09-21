@@ -35,7 +35,8 @@ export default function Chat() {
         changeFace(1)
       }
     }
-    else if(face===2){
+    else if(face===2 ){
+      console.info("answering..")
       answerCall()
     }
   }
