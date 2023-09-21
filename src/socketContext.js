@@ -33,7 +33,8 @@ const ContextProvider = ({ children }) => {
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-  }
+    }
+  },[])
 
   const answerCall = () => {
     setCallAccepted(true);
