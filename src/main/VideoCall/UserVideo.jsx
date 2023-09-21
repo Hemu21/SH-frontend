@@ -22,7 +22,8 @@ export default function UserVideo() {
   useEffect(()=>{
     try{
     if(idData.status==="online"){
-      callUser(idToCall)
+      if(idToCall){
+      callUser(idToCall)}
     }}catch(err){}
   },[idData])
       
