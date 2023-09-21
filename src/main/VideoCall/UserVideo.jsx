@@ -7,7 +7,7 @@ export default function UserVideo() {
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))
   const id = _url.slice(_url.lastIndexOf("/")+1)
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL = "https://sh-backend-61my.onrender.com"
   const [idData,setIdData] = useState()
   const [idToCall, setIdToCall] = useState('');
 
