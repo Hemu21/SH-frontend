@@ -18,10 +18,6 @@ export default function VideoCall(props) {
     <div style={{overflow:"hidden"}}>
       <div className='videocallOpt'>
         <Video/>
-      
-      <div style={{position:"absolute",bottom:"15px","right":"15px"}}>
-        <UserVideo />
-      </div>
       </div>
       <div className='videocallBottom'>
         <CallEndIcon onClick={()=>{leaveCall()}} />
