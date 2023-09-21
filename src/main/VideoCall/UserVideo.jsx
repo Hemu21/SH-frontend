@@ -19,7 +19,7 @@ export default function UserVideo() {
 
     
   },[])
-  useMemo(()=>{
+  useEffect(()=>{
     try{
     if(idData.status==="online"){
       callUser(idToCall)
