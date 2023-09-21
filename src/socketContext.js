@@ -20,7 +20,6 @@ const ContextProvider = ({ children }) => {
   const connectionRef = useRef();
   const just = window.location.href
   useEffect(() => {
-    if(just.slice(just.indexOf("/u/"))){
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
         setStream(currentStream);
@@ -33,7 +32,7 @@ const ContextProvider = ({ children }) => {
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-    }
+    
   },[])
 
   const answerCall = () => {
