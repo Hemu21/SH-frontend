@@ -1,30 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./header.css"
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
 
 export default function Header(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  
+  const backendURL = "https://sh-backend-61my.onrender.com"
+  const _url = window.location.href;
+  const user_id = _url.slice(_url.lastIndexOf("/")+1)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [image,setImage] = useState()
+  fetch(`${backendURL}/api/v1/users`).then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(ee._id===user_id+"data"){setImage(ee.dp)}})))
+
   return (
     <div className='headerMain'>
       <div className="headerTitle">
-        <h1 style={{color:"white",margin:"0px"}}>SH</h1><h1 style={{color:"red",margin:"0px"}}>VideoChat</h1>
+        < h1 style={{color:"white",margin:"0px"}}>SH</h1><h1 style={{color:"red",margin:"0px"}}>VideoChat</h1>
       </div>  
-        {props.login && <Avatar className='icon' onClick={handleClick} alt="default" src="https://i.pinimg.com/736x/ed/46/f0/ed46f0aa9862f435c4f9b300f5ae1625.jpg" />}
+        {props.login && <Avatar className='icon' onClick={handleClick} src={image} />}
         <Menu
         anchorEl={anchorEl}
         id="account-menu"

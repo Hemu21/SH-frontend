@@ -7,7 +7,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 export default function SearchItems(props) {
   const [mydata,setMydata] = useState()
   const [icon,setIcon] = useState(false)
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL = "https://sh-backend-61my.onrender.com"
   const [searchData,setSearchData] = useState()
   const [searchNote,setSearchNote] = useState([])
   const _user = window.location.href

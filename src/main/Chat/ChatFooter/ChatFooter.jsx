@@ -20,7 +20,7 @@ import { Button, Select, TextField } from '@mui/material';
 export default function ChatFooter(props) {
   const [status,setStatus] = useState()
   const [location,setLocation] = useState("")
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL = "https://sh-backend-61my.onrender.com"
   const _url = window.location.href;
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))

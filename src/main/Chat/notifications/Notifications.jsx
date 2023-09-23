@@ -6,7 +6,7 @@ export default function Notifications() {
   const _user = window.location.href
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
   const [note,setNote] = useState([])
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL =  "https://sh-backend-61my.onrender.com"
 
 useEffect(()=>{  
   fetch(`${backendURL}/api/v1/users`).then((res)=>res.json().then((ele)=>ele.map((ee)=>{if(user_id+"data"===ee._id){setNote(ee.notification)}})))
@@ -27,7 +27,7 @@ useEffect(()=>{
   
   return (
     <div className='chatboxbodyMain' >
-      {note.map((ele,i)=>ele.dp&&<div><NotificationItems index={i} data={note} change={change} note={ele.notification} dp={ele.dp} name={ele.user_id}  /></div>)}
+      {note.map((ele,i)=>ele.dp&&<div><NotificationItems key={i} index={i} data={note} change={change} note={ele.notification} dp={ele.dp} name={ele.user_id}  /></div>)}
     </div>
   )
 }

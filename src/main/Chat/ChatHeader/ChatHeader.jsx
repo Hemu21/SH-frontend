@@ -6,7 +6,6 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Logout from '@mui/icons-material/Logout';
-import BlockIcon from '@mui/icons-material/Block';
 import CallIcon from '@mui/icons-material/Call';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -17,7 +16,7 @@ export default function ChatHeader(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [head,setHead] = useState({})
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL =  "https://sh-backend-61my.onrender.com"
   const _url = window.location.href
   const url_slice = _url.slice(_url.lastIndexOf("chat/"))
   const user_id = url_slice.slice(5,url_slice.indexOf("/u"))
@@ -71,11 +70,6 @@ export default function ChatHeader(props) {
           <Avatar /> My account
         </MenuItem>
         <Divider />
-        <MenuItem onClick={(ele)=>{handleClose()}}>
-        <ListItemIcon>
-            <BlockIcon fontSize="small" />
-          </ListItemIcon>  Block This
-        </MenuItem>
         <MenuItem onClick={(ele)=>{handleClose();window.location.href ="/"}}>
           <ListItemIcon>
             <Logout fontSize="small" />

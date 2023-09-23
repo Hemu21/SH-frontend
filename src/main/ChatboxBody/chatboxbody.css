@@ -1,6 +1,5 @@
 .chatboxbodyMain{
     height:calc(100vh - 120px);
-    border: 1px black solid;
     overflow-x: hidden;
     margin-top: 2px;
     display: block;

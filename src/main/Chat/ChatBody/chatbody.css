@@ -1,6 +1,5 @@
 .chatbodyMain{
     height:calc(100vh - 142px);
-    border: 1px black solid;
     overflow-x: hidden;
     margin-top: 62px;
     display: block;
@@ -10,7 +9,6 @@
 }
 .chatbodyMain1{
     height:calc(100vh - 520px);
-    border: 1px black solid;
 }
 
 .chataudio1{

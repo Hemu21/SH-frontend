@@ -24,13 +24,14 @@ export default function UserVideo() {
     if(idData.status==="online"){
       if(idToCall){
       callUser(idToCall)}
+      myVideo.current.srcObject = stream;
     }}catch(err){}
   },[idData])
       
 
     return (
     <div>
-      <video playsInline muted ref={myVideo} autoPlay  />
+      <video playsInline muted ref={myVideo} autoPlay className='videoMainUsers' />
     </div>
   )
 }

@@ -5,9 +5,9 @@ import "./chatboxbody.css"
 export default function ChatboxBody() {
   const _user = window.location.href
   const [alldata,setAlldata] = useState([])
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL =  "https://sh-backend-61my.onrender.com"
   const [data,setData] = useState([])
-  var status = ""
+  var status = "";var dp = "";
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
   useEffect(()=>{
 
@@ -17,14 +17,13 @@ export default function ChatboxBody() {
     
   
   },[])
-  alldata.map((ele)=>{data.map((e)=>{if(e.user_ID+"data"===ele._id){status +=ele.status+"|";console.info(ele._id)}})})
-  console.info("Info:-"+status)
+  alldata.map((ele)=>{data.map((e)=>{if(e.user_ID+"data"===ele._id){status +=ele.status+"|";dp+=ele.dp+"|"}})})
   const arr= status.split("|")
-  console.info("Info:-"+arr)
+  const arr1= dp.split("|")
 console.info(data)
   return (
     <div className='chatboxbodyMain'>
-        {data.map((ele,i) =>ele&&<ChatBox status={arr[i-1]} user={user_id} id={ele.user_ID} />)}
+        {data.map((ele,i) =>ele&&<ChatBox key={i} dp={arr1[i-1]} status={arr[i-1]} user={user_id} id={ele.user_ID} />)}
     </div>
   )
 }

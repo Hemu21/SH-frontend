@@ -30,7 +30,7 @@ export default function Video() {
     }).then((e)=>window.close())
     })
     return (
-    <div style={{border:"1px black solid",width:"100vw",height:"100vh"}}>
+    <div style={{width:"100vw",height:"100vh"}}>
         { <video playsInline ref={userVideo} autoPlay className='videoMainUser'  />}
     </div>
   )

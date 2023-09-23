@@ -11,20 +11,11 @@ import VideoCall from './VideoCall/VideoCall'
 export default function Main() {
   const [val,setVal] = useState(1);
   const _user = window.location.href
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL = "https://sh-backend-61my.onrender.com"
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
   const {call, me,callAccepted, answerCall,leaveCall} = useContext(SocketContext)
   const [vid,setVid] = useState(1)
-  if(call.isReceivedCall && !callAccepted){
-    const ans = window.confirm(`${call.name} is calling.... \n Do you want to accept`)
-    if(ans){
-      answerCall()
-      changeVid(2)
-    }else{
-      leaveCall()
-      changeVid(1)
-    }
-  }
+
   const changeVid = (e)=>{setVid(e)}
   useEffect(()=>{
     fetch(`${backendURL}/api/v1/update-user`,{
@@ -36,6 +27,22 @@ export default function Main() {
       body: JSON.stringify({id:user_id+"data",data:{status:"online",location:"chats"}})
   })
   },[])
+  
+  if(call.isReceivingCall && !callAccepted){
+    if(vid===1){
+      const ans = window.confirm(`${call.name} is calling.... \n Do you want to accept`)
+      if(ans){
+        changeVid(2)
+      }else{
+        changeVid(1)
+      }
+    }
+    else if(vid===2 ){
+      console.info("answering..")
+      answerCall()
+    }
+  }
+  
   if(me){
     fetch(`${backendURL}/api/v1/update-users`,{
         method:"PUT",

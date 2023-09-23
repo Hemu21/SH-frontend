@@ -14,7 +14,7 @@ export default function NotificationItems(props) {
   const [reqChat,setReqChat] = useState([])
   const [resChat,setResChat] = useState([])
   const [enter,setEnter] = useState(false)
-  const backendURL = process.env.BACKENDURL || "https://sh-backend-61my.onrender.com"
+  const backendURL =  "https://sh-backend-61my.onrender.com"
   const [resName,setResName] = useState()
   const _user = window.location.href
   const user_id = _user.slice(_user.lastIndexOf("/")+1)
