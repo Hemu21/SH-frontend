@@ -6,9 +6,6 @@ import ChatSend from './Components/ChatSend'
 export default function ChatBody(props) {
   const data =  props.data
   const lastElementRef = useRef(null);
-    if (lastElementRef.current) {
-      lastElementRef.current.focus();
-    }
   return (
     <div id='chatbody' className='chatbodyMain'>
       <div style={{display:"block"}} >
