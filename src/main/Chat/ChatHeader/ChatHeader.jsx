@@ -45,9 +45,6 @@ export default function ChatHeader(props) {
             <p className='chatHeaderTitle'>{head.user_id}</p>
             <p className='chatHeaderStatus'>{head.status}</p>
         </div>
-        <div className='emoji' onClick={()=>{window.location.href= window.location.href+"/call"}}>
-            <CallIcon fontSize='large' />
-        </div>
         <div className='emoji' onClick={()=>{props.changeFace(2)}}>
             <VideoCallIcon fontSize='large' />
         </div>
