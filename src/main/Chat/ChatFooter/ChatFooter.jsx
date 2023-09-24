@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState,useContext } from 'react'
 import "./chatfooter.css"
 import { AudioRecorder } from 'react-audio-voice-recorder';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
@@ -15,9 +15,11 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import MessageIcon from '@mui/icons-material/Message';
 import CloseIcon from '@mui/icons-material/Close';
 import { Button, Select, TextField } from '@mui/material';
+import { SocketContext } from '../../../socketContext';
 
 
 export default function ChatFooter(props) {
+  const {stream} = useContext(SocketContext)
   const [status,setStatus] = useState()
   const [location,setLocation] = useState("")
   const backendURL = "https://sh-backend-61my.onrender.com"
@@ -93,6 +95,11 @@ export default function ChatFooter(props) {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    stream.getTracks().forEach((track) => {
+        if (track.readyState == 'live') {
+            track.stop();
+        }
+    });
   };
 
   const handleClose = () => {
