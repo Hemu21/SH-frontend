@@ -115,13 +115,11 @@ export default function Chat() {
     
     fetch(`${backendURL}/api/v1/update-user`,{
       method:"PUT",
-      mode:"no-cors",
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({id:user_id+"data",data:sent})
     }).then((e)=>{
     fetch(`${backendURL}/api/v1/update-user`,{
       method:"PUT",
-      mode:"no-cors",
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({id:id+"data",data:recive})
     }).then((e)=>window.location.reload())})
