@@ -112,15 +112,16 @@ export default function Chat() {
     const recive = {chats:revdata}
     mydata.map((ele)=>console.info(ele))
     revdata.map((ee)=>console.info(ee))
+    
     fetch(`${backendURL}/api/v1/update-user`,{
       method:"PUT",
-      mode:"cors",
+      mode:"no-cors",
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({id:user_id+"data",data:sent})
     }).then((e)=>{
     fetch(`${backendURL}/api/v1/update-user`,{
       method:"PUT",
-      mode:"cors",
+      mode:"no-cors",
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({id:id+"data",data:recive})
     }).then((e)=>window.location.reload())})
