@@ -161,9 +161,6 @@ export default function ChatFooter(props) {
             <AttachFileIcon fontSize='large' />
             <input ref={fileInput} accept="audio/wav" type="file" style={{ display: 'none' }} />
         </div>
-        <div className='emoji'  onClick={(e)=>{handleClick(e);setText("")}}>
-            <KeyboardVoiceIcon fontSize='large' />
-        </div>
         
         <Menu
         anchorEl={anchorEl}
