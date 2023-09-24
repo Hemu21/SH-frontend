@@ -94,26 +94,12 @@ function Signin(){
    else if(password!==document.getElementById("signin-confirm-password").value){
       toast.error("Both passwords entered should be same",{theme:"colored"})
     }else{
-      if(document.getElementById("signbtn").innerText === "SIGN IN"){
-        const Otp = document.getElementById("signin-otp").value;
-          if(genotp===Otp){
-            getId({email:email,password:password,call_id:"",user_id:user_id,phno:phno}).then((ele)=>
+       getId({email:email,password:password,call_id:"",user_id:user_id,phno:phno}).then((ele)=>
             {
               window.location.href = `./main/chat/${user_id}`
             }).catch((ele)=>{
               toast.error("Error in saving your data",{theme:"colored"})
             })
-        }
-          else{
-            toast.error("Invalid OTP",{theme:"colored"})
-          }
-      }else{
-        handleSendOTP(phno).then((e)=>{
-          toast.success("otp sent succussfully",{theme:"colored"})
-          document.getElementById("otp").className = "s-arrange"
-          document.getElementById("signbtn").innerText = "Sign in"
-        }).catch((err)=>toast.error("Otp not Sent Check the number you Provide "+err,{theme:"colored"}))
-      }
     }})  
   }
 
@@ -138,12 +124,8 @@ function Signin(){
           <div className='s-arrange'>
             <label className='s-Labelm'>MobileNo: </label><TextField id="signin-mobileno" label="Mobile Number" type="text" placeholder="+916473722786" required />
           </div>
-          <p>Enter Mobile Number with Country code</p>
-          <div id="otp" className='s-arrangeoi'>
-            <label className='s-Labelo'>OTP: </label><TextField id="signin-otp" label="OTP" type="password" required />
-          </div>
           <div className="s-arrange1">
-            <Button id="signbtn" onClick={signf} variant="contained" color="success">OTP</Button>
+            <Button id="signbtn" onClick={signf} variant="contained" color="success">SignIn</Button>
           </div>
           <div className="s-arrange3">
             <p>Already Registered? <a href='./login'>Login</a></p>
